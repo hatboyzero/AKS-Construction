@@ -170,7 +170,7 @@ var aks_baseSubnet =  {
 }
 
 var aks_podSubnet_name = 'aks-pods-sn'
-var aks_podSubnet =  {
+var aks_podSubnet_tmp =  {
   name: aks_podSubnet_name
   properties: union({
       addressPrefix: vnetPodAddressPrefix
@@ -189,7 +189,7 @@ var aks_podSubnet =  {
 }
 
 var aks_subnet = networkSecurityGroups ? union(aks_baseSubnet, nsgAks.outputs.nsgSubnetObj) : aks_baseSubnet
-var aks_podsubnet = networkSecurityGroups ? union(aks_podSubnet, nsgAks.outputs.nsgSubnetObj) : aks_podSubnet
+var aks_podsubnet = networkSecurityGroups ? union(aks_podSubnet_tmp, nsgAks.outputs.nsgSubnetObj) : aks_podSubnet_tmp
 
 
 
